@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .test-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .test-button:hover {
+            background: #5a6fd8;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Jira Ticket Creator - Modal Test</h1>
+        <p>This page tests if the modal can be loaded properly.</p>
+        
+        <button class="test-button" id="testModalBtn">Test Modal</button>
+        <button class="test-button" id="testStorageBtn">Test Storage</button>
+        <button class="test-button" id="testBackgroundBtn">Test Background Script</button>
+        
+        <div id="status"></div>
+        
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Select some text on this page</li>
+            <li>Look for the floating "🎫 Create Jira Ticket" button</li>
+            <li>Click it to test the modal</li>
+            <li>Check the browser console for debug messages</li>
+        </ol>
+        
+        <h2>Sample Text:</h2>
+        <p>This is sample text that you can select to test the Jira ticket creation functionality. Select this text and look for the floating button that should appear.</p>
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <script src="test.js"></script>
+</body>
+</html>
