@@ -406,13 +406,23 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === 'createJiraTicket' && info.selectionText) {
-        // Store the selected text and open popup
+        // Store the selected text
         chrome.storage.local.set({
             selectedText: info.selectionText,
             selectedUrl: tab.url,
             selectedTitle: tab.title
         });
         
-        chrome.action.openPopup();
+        // Send message to content script to open modal
+        chrome.tabs.sendMessage(tab.id, {
+            action: 'openModalFromContextMenu',
+            text: info.selectionText,
+            url: tab.url,
+            title: tab.title
+        }).catch(error => {
+            console.log('Could not send message to content script:', error);
+            // Fallback: open popup if content script is not available
+            chrome.action.openPopup();
+        });
     }
 });

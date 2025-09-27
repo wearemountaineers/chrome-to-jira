@@ -41,7 +41,7 @@
         }
     }
 
-    // Listen for messages from the popup
+    // Listen for messages from the popup and background script
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.action === 'getSelectedText') {
             selectedText = getSelectedText();
@@ -60,6 +60,16 @@
                     success: false,
                     message: 'No text selected. Please select some text on the page first.'
                 });
+            }
+        }
+        
+        if (request.action === 'openModalFromContextMenu') {
+            // Open modal with selected text from context menu
+            if (request.text && request.text.trim()) {
+                showModal(request.text.trim());
+                sendResponse({ success: true });
+            } else {
+                sendResponse({ success: false, message: 'No text provided' });
             }
         }
         
@@ -368,6 +378,10 @@ document.addEventListener('mousedown', (e) => {
     // Function to show the modal
     function showModal(selectedText) {
         try {
+            // Set modal flags to prevent button interference
+            isModalOpen = true;
+            isOpeningModal = true;
+            
             // Remove existing modal if any
             const existingModal = document.getElementById('jira-ticket-modal');
             if (existingModal) {
