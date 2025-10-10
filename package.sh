@@ -56,3 +56,5 @@ echo "   3. Submit for review"
 echo ""
 echo "🔗 Chrome Web Store Developer Dashboard:"
 echo "   https://chrome.google.com/webstore/devconsole/"
+
+

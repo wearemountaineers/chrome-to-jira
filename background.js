@@ -1,6 +1,6 @@
 // Background script for handling API communications and extension lifecycle
 chrome.runtime.onInstalled.addListener(async () => {
-    console.log('Jira Ticket Creator extension installed');
+    console.log('Jira Ticket Creator extension v1.0.1 installed');
     
     try {
         // Check if configuration already exists
